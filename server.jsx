@@ -11,6 +11,12 @@ import fetchComponentData        from 'lib/fetchComponentData';
 import { createStore,
          combineReducers,
          applyMiddleware }       from 'redux';
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+
+const middleware = process.env.NODE_ENV === 'production'
+  ? [thunk]
+  : [thunk, createLogger()]
 
 const app = express();
 
@@ -21,7 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use( (req, res) => {
   const location = createLocation(req.url);
   const reducer  = combineReducers(reducers);
-  const store    = createStore(reducer, undefined, applyMiddleware(promiseMiddleware))
+  const store    = createStore(reducer, undefined, applyMiddleware(...middleware))
 
   match({ routes, location }, (err, redirectLocation, renderProps) => {
     if (err) {

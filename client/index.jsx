@@ -11,12 +11,19 @@ import { createStore,
     combineReducers,
     applyMiddleware }  from 'redux';
 
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+
+const middleware = process.env.NODE_ENV === 'production'
+  ? [thunk]
+  : [thunk, createLogger()]
+
 const initialState = immutifyState(window.__INITIAL_STATE__);
 
 const history = createBrowserHistory();
 
 const reducer = combineReducers(reducers);
-const store   = applyMiddleware(promiseMiddleware)(createStore)(reducer, initialState);
+const store   = applyMiddleware(...middleware)(createStore)(reducer, initialState);
 
 render(
     <Provider store={store}>

@@ -1,7 +1,14 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux'
+import { listFolder } from '../actions/dropbox/action-creators'
 
-export default class MainView extends React.Component {
+class MainView extends React.Component {
+  constructor (props) {
+    super(props)
+    this.props.listFolder({path: ""}).then((res) => {
 
+    })
+  }
 
   render() {
     return (
@@ -14,3 +21,7 @@ export default class MainView extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ dropbox }) => ({ dropbox })
+const mapDispatchToProps = { listFolder }
+export default connect(mapStateToProps, mapDispatchToProps)(MainView)
