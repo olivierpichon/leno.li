@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { listFolder, getPreview } from '../actions/dropbox/action-creators'
 import FolderList from './folder-list'
+import ImgList from './img-list'
 
 class MainView extends React.Component {
   constructor (props) {
@@ -14,6 +15,7 @@ class MainView extends React.Component {
 
   render() {
     const folders = this.props.dropbox.get("entries").get("folders")
+    const imgs    = this.props.dropbox.get("entries").get("imgs")
 
     return (
       <div id="main-view">
@@ -22,6 +24,7 @@ class MainView extends React.Component {
         <hr />
 
         <FolderList folders={ folders }/>
+        <ImgList imgs={ imgs } />
       </div>
     );
   }
