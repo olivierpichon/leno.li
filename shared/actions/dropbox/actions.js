@@ -13,3 +13,7 @@ export const listfolderFailure = (data) => ({
     error
   }
 })
+
+export const updateStore = (data) => ({
+  type: types.update_store
+})

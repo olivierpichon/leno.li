@@ -5,8 +5,8 @@ import createBrowserHistory   from 'history/lib/createBrowserHistory';
 import { Provider }           from 'react-redux';
 import * as reducers          from 'reducers';
 import routes                 from 'routes';
-import promiseMiddleware      from 'lib/promiseMiddleware';
 import immutifyState          from 'lib/immutifyState';
+import { listFolder }         from '../shared/actions/dropbox/action-creators'
 import { createStore,
     combineReducers,
     applyMiddleware }  from 'redux';
@@ -24,6 +24,11 @@ const history = createBrowserHistory();
 
 const reducer = combineReducers(reducers);
 const store   = applyMiddleware(...middleware)(createStore)(reducer, initialState);
+
+history.listen(location => {
+  const params = { splat: location.pathname.substring(1) }
+  store.dispatch(listFolder(params))
+});
 
 render(
     <Provider store={store}>

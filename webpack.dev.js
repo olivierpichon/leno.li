@@ -10,6 +10,7 @@ const BABEL_QUERY = {
   presets: ['react', 'es2015'],
   plugins: [
     ['transform-object-rest-spread'],
+    ['transform-class-properties'],
     [
       'react-transform',
       {
