@@ -14,8 +14,8 @@ class MainView extends React.Component {
   ];
 
   render() {
-    const folders = this.props.dropbox.get("entries").get("folders")
-    const imgs    = this.props.dropbox.get("entries").get("imgs")
+    const folders = this.props.dropbox.get('entries').get('folders')
+    const imgs    = this.props.dropbox.get('entries').get('imgs')
 
     return (
       <div id="main-view">

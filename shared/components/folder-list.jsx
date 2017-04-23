@@ -12,7 +12,7 @@ class FolderList extends React.Component {
       <div className="folder-list">
         <h1>Folder List</h1>
         {folders.map(folder => (
-          <Folder folder={folder} key={folder.get("id")} />
+          <Folder folder={folder} key={folder.get('id')} />
         ))}
       </div>
   );

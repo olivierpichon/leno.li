@@ -1,13 +1,12 @@
 import dropbox from '../../lib/dropbox'
-import { Buffer } from 'buffer/'
-import toBuffer from 'blob-to-buffer'
 import * as actions from './actions'
+import getBuffer from '../../lib/getBuffer'
 
 const imageExtensions = ['JPG', 'PNG', 'GIF', 'JPEG', 'PNG']
 
-export const listFolder = ({splat=""}) => (dispatch) => {
+export const listFolder = ({splat=''}) => (dispatch) => {
   dispatch(actions.updateStore())
-  const path = splat.length ? `/${splat}` : ""
+  const path = splat.length ? `/${splat}` : ''
   return dropbox.filesListFolder({path})
     .then((response) => {
       const entries = response.entries;
@@ -17,8 +16,7 @@ export const listFolder = ({splat=""}) => (dispatch) => {
         const extension = file.name.split('.').pop()
         return imageExtensions.includes(extension.toUpperCase())
       })
-      const result = { folders, imgs }
-      return result
+      return { folders, imgs }
     })
     .then(({folders, imgs}) => {
       const promises = imgs.map(img => getThumbnail(img.path_display, img))
@@ -44,17 +42,3 @@ const getThumbnail = (path, img) => {
     }
   )
 }
-
-const getBuffer = (response) => {
-  const promise = new Promise((resolve, reject) => {
-    if (response.fileBinary) {
-      return resolve(new Buffer(response.fileBinary, 'binary'))
-    } else {
-      toBuffer(response.fileBlob, (err, buffer) => {
-        return resolve(buffer)
-      })
-    }
-  })
-  return promise
-}
-

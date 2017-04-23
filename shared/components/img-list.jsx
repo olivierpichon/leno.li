@@ -12,7 +12,7 @@ class ImgList extends React.Component {
       <div className="image-list">
         <h1>Image List</h1>
         {imgs.map(img => (
-          <Picture img={img} key={img.get("id")} />
+          <Picture img={img} key={img.get('id')} />
         ))}
       </div>
     );
