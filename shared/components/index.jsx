@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { listFolder, getPreview } from '../actions/dropbox/action-creators'
+import { listFolder } from '../actions/dropbox/action-creators'
 import FolderList from './folder-list'
 import ImgList from './img-list'
 
@@ -31,5 +31,5 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = ({ dropbox }) => ({ dropbox })
-const mapDispatchToProps = { listFolder, getPreview }
+const mapDispatchToProps = { listFolder }
 export default connect(mapStateToProps, mapDispatchToProps)(MainView)

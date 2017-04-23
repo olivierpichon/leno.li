@@ -9,19 +9,22 @@ export const listFolder = ({splat=""}) => (dispatch) => {
   return dropbox.filesListFolder({path})
     .then((response) => {
       const entries = response.entries;
-      const folders = entries.filter((file) => {
-        return file['.tag'] === 'folder'
-      })
-      const files = entries.filter((file) => {
-        return file['.tag'] === 'file'
-      })
-      const imgs = files.filter((file) => {
+      const folders = entries.filter((file) => (file['.tag'] === 'folder'))
+      const files   = entries.filter((file) => (file['.tag'] === 'file'))
+      const imgs    = files.filter((file) => {
         const extension = file.name.split('.').pop()
         return imageExtensions.includes(extension.toUpperCase())
       })
       const result = { folders, imgs }
-      dispatch(actions.listfolderSuccess(result))
       return result
+    })
+    .then(({folders, imgs}) => {
+      const promises = imgs.map(img => getThumbnail(img.path_display, img))
+      return Promise.all(promises).then((imgs) => {
+        const result = { folders, imgs }
+        dispatch(actions.listfolderSuccess(result))
+        return result
+      })
     })
     .catch((error) => {
       dispatch(actions.listfolderFailure(error))
@@ -29,14 +32,11 @@ export const listFolder = ({splat=""}) => (dispatch) => {
     });
 }
 
-export const getPreview = ({path=""}) => (dispatch) => {
-  return dropbox.filesDownload({path: path})
+export const getThumbnail = (path, img) => {
+  return dropbox.filesGetThumbnail({path: path})
     .then((response) => {
-      return response.fileBlob
+      img.thumbnailBlob = response.fileBlob
+      return img
     })
-    .catch((error) => {
-      dispatch(actions.listfolderFailure(error))
-      return Promise.reject(error)
-    });
 }
 
