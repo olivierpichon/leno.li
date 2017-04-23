@@ -1,4 +1,6 @@
 import dropbox from '../../lib/dropbox'
+import { Buffer } from 'buffer/'
+import toBuffer from 'blob-to-buffer'
 import * as actions from './actions'
 
 const imageExtensions = ['JPG', 'PNG', 'GIF', 'JPEG', 'PNG']
@@ -32,11 +34,27 @@ export const listFolder = ({splat=""}) => (dispatch) => {
     });
 }
 
-export const getThumbnail = (path, img) => {
+const getThumbnail = (path, img) => {
   return dropbox.filesGetThumbnail({path: path})
-    .then((response) => {
-      img.thumbnailBlob = response.fileBlob
+    .then(getBuffer).then((buffer) => {
+      const base64    = buffer.toString('base64')
+      const thumbnail = `data:application/octet-stream;base64, ${base64}`
+      img.thumbnail = thumbnail
       return img
-    })
+    }
+  )
+}
+
+const getBuffer = (response) => {
+  const promise = new Promise((resolve, reject) => {
+    if (response.fileBinary) {
+      return resolve(new Buffer(response.fileBinary, 'binary'))
+    } else {
+      toBuffer(response.fileBlob, (err, buffer) => {
+        return resolve(buffer)
+      })
+    }
+  })
+  return promise
 }
 
