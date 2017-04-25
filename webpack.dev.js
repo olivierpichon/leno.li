@@ -46,7 +46,8 @@ export default function(app) {
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
+      new webpack.EnvironmentPlugin(['NODE_ENV', 'DROPBOX_TOKEN', 'NODE_PATH'])
     ]
   });
 

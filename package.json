@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js --progress --color -p --config webpack.prod.js",
-    "start": "NODE_PATH=$NODE_PATH:./shared node index.js",
-    "start-dev": "NODE_PATH=$NODE_PATH:./shared nodemon -e js,jsx index.js",
+    "start": "node index.js",
+    "start-dev": "nodemon -e js,jsx index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

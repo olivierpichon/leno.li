@@ -33,6 +33,7 @@ module.exports = {
       compress: {
         warnings: false
       }
-    })
+    }),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'DROPBOX_TOKEN', 'NODE_PATH'])
   ]
 };
