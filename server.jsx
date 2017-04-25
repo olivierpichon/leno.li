@@ -23,6 +23,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('./webpack.dev').default(app);
 }
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
 app.use( (req, res) => {
   const location = createLocation(req.url);
   const reducer  = combineReducers(reducers);
