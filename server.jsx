@@ -1,22 +1,23 @@
-import express                   from 'express';
-import path                      from 'path';
-import React                     from 'react';
-import { renderToString }        from 'react-dom/server';
-import { RouterContext, match }  from 'react-router';
-import { createLocation }        from 'history/lib/LocationUtils';
-import routes                    from 'routes';
-import { Provider }              from 'react-redux';
-import * as reducers             from 'reducers';
-import fetchComponentData        from 'lib/fetchComponentData';
+import express                   from 'express'
+import path                      from 'path'
+import React                     from 'react'
+import { renderToString }        from 'react-dom/server'
+import { RouterContext, match }  from 'react-router'
+import { createLocation }        from 'history/lib/LocationUtils'
+import routes                    from 'routes'
+import { Provider }              from 'react-redux'
+import * as reducers             from 'reducers'
+import logger                    from 'lib/logger'
+import fetchComponentData        from 'lib/fetchComponentData'
+import getGdriveCredentials      from 'lib/getGdriveCredentials'
 import { createStore,
          combineReducers,
          applyMiddleware }       from 'redux';
 import thunk from 'redux-thunk'
-import { createLogger } from 'redux-logger'
 
 const middleware = process.env.NODE_ENV === 'production'
   ? [thunk]
-  : [thunk, createLogger()]
+  : [thunk, logger]
 
 const app = express();
 
@@ -72,7 +73,8 @@ app.use( (req, res) => {
 
       return HTML;
     }
-    fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+    getGdriveCredentials(store.dispatch, renderProps.components, renderProps.params)
+      .then((result) => { return fetchComponentData(store.dispatch, renderProps.components, renderProps.params) })
       .then(renderView)
       .then(html => res.end(html))
       .catch(err => res.end(err.message));

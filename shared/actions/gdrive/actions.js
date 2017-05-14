@@ -1,14 +1,14 @@
 import types from './action-types'
 
-export const listfolderSuccess = (data) => ({
-  type: types.listfolder_success,
+export const getTokenSuccess = (data) => ({
+  type: types.get_token_success,
   payload: {
     data
   }
 })
 
-export const listfolderFailure = (error) => ({
-  type: types.listfolder_failure,
+export const getTokenFailure = (error) => ({
+  type: types.get_token_failure,
   payload: {
     error
   }
