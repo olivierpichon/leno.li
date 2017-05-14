@@ -3,13 +3,7 @@ import * as actions from '../actions/gdrive/actions'
 
 const authFactory = new GoogleAuth()
 
-const scopes = ["https://www.googleapis.com/auth/drive", 
-                "https://www.googleapis.com/auth/drive.appdata", 
-                "https://www.googleapis.com/auth/drive.file", 
-                "https://www.googleapis.com/auth/drive.metadata", 
-                "https://www.googleapis.com/auth/drive.metadata.readonly", 
-                "https://www.googleapis.com/auth/drive.photos.readonly", 
-                "https://www.googleapis.com/auth/drive.readonly"];
+const scopes = ["https://www.googleapis.com/auth/drive.readonly"];
 
 const handleError = (err, reject, dispatch) => {
   const error = `Authentication failed because of ${err}`
