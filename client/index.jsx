@@ -7,7 +7,7 @@ import * as reducers          from 'reducers'
 import routes                 from 'routes'
 import immutifyState          from 'lib/immutifyState'
 import logger                 from 'lib/logger'
-import { listFolder }         from '../shared/actions/dropbox/action-creators'
+import { listFolder }         from '../shared/actions/gdrive/action-creators'
 import { createStore,
     combineReducers,
     applyMiddleware }  from 'redux'
@@ -27,7 +27,7 @@ const store   = applyMiddleware(...middleware)(createStore)(reducer, initialStat
 
 history.listen(location => {
   const params = { splat: location.pathname.substring(1) }
-  store.dispatch(listFolder(params))
+  store.dispatch(listFolder(params, store.getState().gdrive.get('authorization').toJS()))
 });
 
 render(

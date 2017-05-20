@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { listFolder } from '../actions/dropbox/action-creators'
+import { listFolder } from '../actions/gdrive/action-creators'
 import FolderList from './folder-list'
 import ImgList from './img-list'
 
@@ -14,8 +14,8 @@ class MainView extends React.Component {
   ];
 
   render() {
-    const folders = this.props.dropbox.get('entries').get('folders')
-    const imgs    = this.props.dropbox.get('entries').get('imgs')
+    const folders = this.props.gdrive.get('entries').get('folders')
+    const imgs    = this.props.gdrive.get('entries').get('imgs')
 
     return (
       <div id="main-view">
@@ -30,6 +30,6 @@ class MainView extends React.Component {
   }
 }
 
-const mapStateToProps = ({ dropbox }) => ({ dropbox })
+const mapStateToProps = ({ gdrive }) => ({ gdrive })
 const mapDispatchToProps = { listFolder }
 export default connect(mapStateToProps, mapDispatchToProps)(MainView)

@@ -11,7 +11,7 @@ class Picture extends React.Component {
     return (
       <div>
         <Link to="#">{img.get('name')}</Link>
-        <img src={img.get('thumbnail')} />
+        <img src={img.get('thumbnailLink')} />
       </div>
     );
   }

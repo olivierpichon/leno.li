@@ -14,6 +14,20 @@ export const getTokenFailure = (error) => ({
   }
 })
 
+export const listfolderSuccess = (data) => ({
+  type: types.listfolder_success,
+  payload: {
+    data
+  }
+})
+
+export const listfolderFailure = (error) => ({
+  type: types.listfolder_failure,
+  payload: {
+    error
+  }
+})
+
 export const updateStore = (data) => ({
   type: types.update_store
 })
