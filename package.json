@@ -31,7 +31,6 @@
     "babel-preset-react": "^6.16.0",
     "blob-to-buffer": "^1.2.6",
     "buffer": "^5.0.6",
-    "dropbox": "^2.5.0",
     "express": "^4.14.0",
     "google-auth-library": "git+https://github.com/olivierpichon/google-auth-library.git",
     "history": "^3.0.0",

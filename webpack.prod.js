@@ -34,6 +34,6 @@ module.exports = {
         warnings: false
       }
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'DROPBOX_TOKEN', 'NODE_PATH'])
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS', 'NODE_PATH'])
   ]
 };
