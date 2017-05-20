@@ -19,6 +19,7 @@
   "author": "Olivier Pichon",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.16.1",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.9",
@@ -30,8 +31,8 @@
     "babel-preset-react": "^6.16.0",
     "blob-to-buffer": "^1.2.6",
     "buffer": "^5.0.6",
-    "dropbox": "^2.5.0",
     "express": "^4.14.0",
+    "google-auth-library": "git+https://github.com/olivierpichon/google-auth-library.git",
     "history": "^3.0.0",
     "immutable": "^3.8.1",
     "object-assign": "^4.1.0",

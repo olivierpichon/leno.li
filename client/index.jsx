@@ -1,22 +1,22 @@
-import React                  from 'react';
-import { render }             from 'react-dom';
-import { Router }             from 'react-router';
-import createBrowserHistory   from 'history/lib/createBrowserHistory';
-import { Provider }           from 'react-redux';
-import * as reducers          from 'reducers';
-import routes                 from 'routes';
-import immutifyState          from 'lib/immutifyState';
-import { listFolder }         from '../shared/actions/dropbox/action-creators'
+import React                  from 'react'
+import { render }             from 'react-dom'
+import { Router }             from 'react-router'
+import createBrowserHistory   from 'history/lib/createBrowserHistory'
+import { Provider }           from 'react-redux'
+import * as reducers          from 'reducers'
+import routes                 from 'routes'
+import immutifyState          from 'lib/immutifyState'
+import logger                 from 'lib/logger'
+import { listFolder }         from '../shared/actions/gdrive/action-creators'
 import { createStore,
     combineReducers,
-    applyMiddleware }  from 'redux';
+    applyMiddleware }  from 'redux'
 
 import thunk from 'redux-thunk'
-import { createLogger } from 'redux-logger'
 
 const middleware = process.env.NODE_ENV === 'production'
   ? [thunk]
-  : [thunk, createLogger()]
+  : [thunk, logger]
 
 const initialState = immutifyState(window.__INITIAL_STATE__);
 
@@ -27,7 +27,7 @@ const store   = applyMiddleware(...middleware)(createStore)(reducer, initialStat
 
 history.listen(location => {
   const params = { splat: location.pathname.substring(1) }
-  store.dispatch(listFolder(params))
+  store.dispatch(listFolder(params, store.getState().gdrive.get('authorization').toJS()))
 });
 
 render(

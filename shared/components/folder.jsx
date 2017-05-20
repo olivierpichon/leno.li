@@ -10,7 +10,7 @@ class Folder extends React.Component {
     const folder = this.props.folder
     return (
       <div>
-        <Link to={folder.get('path_display')}>{folder.get('name')}</Link>
+        <Link to={`/${folder.get('id')}`}>{folder.get('name')}</Link>
       </div>
     );
   }

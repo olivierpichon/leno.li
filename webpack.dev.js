@@ -47,7 +47,7 @@ export default function(app) {
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
-      new webpack.EnvironmentPlugin(['NODE_ENV', 'DROPBOX_TOKEN', 'NODE_PATH'])
+      new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS', 'NODE_PATH'])
     ]
   });
 
