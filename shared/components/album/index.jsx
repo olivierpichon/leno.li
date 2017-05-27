@@ -13,7 +13,7 @@ class Album extends React.Component {
     const imgs    = this.props.gdrive.get('entries').get('imgs')
 
     return (
-      <div id="main-view">
+      <div>
         <h1>LenOli's Website</h1>
 
         <hr />

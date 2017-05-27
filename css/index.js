@@ -1,4 +1,10 @@
-require("./layout.css");
+require("./general.css");
 require("./box.css");
 require("./button.css");
 require("./icon.css");
+require("./image.css");
+require("./list.css");
+require("./section.css");
+require("./table.css");
+require("./wrapper.css");
+require("./layout.css");
