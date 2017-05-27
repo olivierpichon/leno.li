@@ -9,13 +9,11 @@ class FolderList extends React.Component {
   render() {
     const folders = this.props.folders
     return (
-      <div className="folder-list">
-        <ul className="tabs">
-          {folders.map(folder => (
-            <Folder folder={folder} key={folder.get('id')} />
-          ))}
-        </ul>
-      </div>
+      <ul className="tabs">
+        {folders.map(folder => (
+          <Folder folder={folder} key={folder.get('id')} />
+        ))}
+      </ul>
   );
   }
 }

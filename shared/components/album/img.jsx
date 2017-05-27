@@ -17,7 +17,7 @@ class Picture extends React.Component {
     const img  = this.props.img
     const link = this.getPictureLink()
     return (
-      <div>
+      <div className="media all people">
         <a href={link}><img src={img.get('thumbnailLink')} /></a>
       </div>
     );

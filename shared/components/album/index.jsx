@@ -13,7 +13,7 @@ class Album extends React.Component {
     const imgs    = this.props.gdrive.get('entries').get('imgs')
 
     return (
-      <div>
+      <section id="main">
         <section id="galleries">
           <div className="gallery">
             <header>
@@ -23,7 +23,11 @@ class Album extends React.Component {
             <ImgList imgs={ imgs } />
           </div>
         </section>
-      </div>
+        <section id="contact"></section>
+        <footer id="footer">
+          <div class="copyright"></div>
+        </footer>
+      </section>
     );
   }
 }
