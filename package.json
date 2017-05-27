@@ -31,7 +31,9 @@
     "babel-preset-react": "^6.16.0",
     "blob-to-buffer": "^1.2.6",
     "buffer": "^5.0.6",
+    "css-loader": "^0.28.3",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "google-auth-library": "git+https://github.com/olivierpichon/google-auth-library.git",
     "history": "^3.0.0",
     "immutable": "^3.8.1",
@@ -43,14 +45,12 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
+    "style-loader": "^0.18.1",
     "webpack": "^1.14.0"
   },
   "devDependencies": {
-    "css-loader": "^0.28.3",
-    "extract-text-webpack-plugin": "^1.0.1",
     "nodemon": "^1.11.0",
     "react-transform-hmr": "^1.0.4",
-    "style-loader": "^0.18.1",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
   }
