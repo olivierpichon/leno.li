@@ -1,5 +1,6 @@
 import webpack              from 'webpack';
 import assign               from 'object-assign';
+import ExtractTextPlugin    from 'extract-text-webpack-plugin';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import prodCfg              from './webpack.prod.js';
@@ -31,7 +32,8 @@ export default function(app) {
     devtool: 'inline-source-map',
     entry:   [
       'webpack-hot-middleware/client',
-      './client'
+      './client',
+      './css'
     ],
     module: {
       loaders: [
@@ -40,6 +42,10 @@ export default function(app) {
           exclude: /node_modules/,
           loader:  'babel',
           query:   BABEL_QUERY
+        },
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract("style-loader", "css-loader")
         }
       ]
     },
@@ -47,6 +53,7 @@ export default function(app) {
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
+      new ExtractTextPlugin("style.css"),
       new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS', 'NODE_PATH'])
     ]
   });

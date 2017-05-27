@@ -1,9 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: [
-    './client'
+    './client',
+    './css'
   ],
   resolve: {
     modulesDirectories: ['node_modules', 'shared'],
@@ -20,6 +22,10 @@ module.exports = {
         test:    /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['babel']
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       }
     ]
   },
@@ -34,6 +40,7 @@ module.exports = {
         warnings: false
       }
     }),
+    new ExtractTextPlugin("style.css"),
     new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS', 'NODE_PATH'])
   ]
 };
