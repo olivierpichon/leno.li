@@ -14,12 +14,15 @@ class Album extends React.Component {
 
     return (
       <div>
-        <h1>LenOli's Website</h1>
-
-        <hr />
-
-        <FolderList folders={ folders }/>
-        <ImgList imgs={ imgs } />
+        <section id="galleries">
+          <div className="gallery">
+            <header>
+              <h1>Gallery</h1>
+              <FolderList folders={ folders }/>
+            </header>
+            <ImgList imgs={ imgs } />
+          </div>
+        </section>
       </div>
     );
   }

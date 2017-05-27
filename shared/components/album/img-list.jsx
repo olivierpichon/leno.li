@@ -9,11 +9,12 @@ class ImgList extends React.Component {
   render() {
     const imgs = this.props.imgs
     return (
-      <div className="image-list">
-        <h1>Image List</h1>
-        {imgs.map(img => (
-          <Picture img={img} key={img.get('id')} />
-        ))}
+      <div className="content">
+        <div className="media all people">
+          {imgs.map(img => (
+            <Picture img={img} key={img.get('id')} />
+          ))}
+        </div>
       </div>
     );
   }

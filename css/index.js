@@ -8,3 +8,4 @@ require("./section.css");
 require("./table.css");
 require("./wrapper.css");
 require("./layout.css");
+require("./gallery.css");
