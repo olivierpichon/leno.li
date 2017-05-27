@@ -1,17 +1,12 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { listFolder } from '../actions/gdrive/action-creators'
 import FolderList from './folder-list'
 import ImgList from './img-list'
 
-class MainView extends React.Component {
+class Album extends React.Component {
   constructor (props) {
     super(props)
   }
-
-  static needs = [
-    listFolder
-  ];
 
   render() {
     const folders = this.props.gdrive.get('entries').get('folders')
@@ -31,5 +26,4 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = ({ gdrive }) => ({ gdrive })
-const mapDispatchToProps = { listFolder }
-export default connect(mapStateToProps, mapDispatchToProps)(MainView)
+export default connect(mapStateToProps, undefined)(Album)
