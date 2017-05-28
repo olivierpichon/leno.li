@@ -78,11 +78,11 @@ body.is-loading #banner > .inner {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  min-height: 75vh;
-  height: 75vh;
+  min-height: 100vh;
+  height: 100vh;
   position: relative;
   background: #000;
-  /*background-image: url(../../images/banner.jpg);*/
+  background-image: url("../img/byron.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;

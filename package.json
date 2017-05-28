@@ -34,6 +34,7 @@
     "css-loader": "^0.28.3",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.11.1",
     "google-auth-library": "git+https://github.com/olivierpichon/google-auth-library.git",
     "history": "^3.0.0",
     "immutable": "^3.8.1",

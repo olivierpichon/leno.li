@@ -26,7 +26,8 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      }
+      },
+      { test: /\.(jpe?g|gif|png|svg.*|woff.*|eot.*|ttf.*|wav|mp3)$/, loader: "file" }
     ]
   },
   plugins: [
