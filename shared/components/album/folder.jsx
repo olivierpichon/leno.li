@@ -9,7 +9,7 @@ class Folder extends React.Component {
   render() {
     const folder = this.props.folder
     return (
-      <li><Link className="button active" to={`/${folder.get('id')}`}>{folder.get('name')}</Link></li>
+      <li><Link className="button active" to={`/albums/${folder.get('id')}`}>{folder.get('name')}</Link></li>
     );
   }
 }

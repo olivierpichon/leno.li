@@ -1,9 +1,9 @@
 import axios from '../../lib/axios'
 import * as actions from './actions'
 
-export const listFolder = ({splat=''}, {access_token}) => (dispatch) => {
+export const listFolder = ({album_id}, {access_token}) => (dispatch) => {
   dispatch(actions.updateStore())
-  const folder = splat.length ? splat : 'root'
+  const folder = album_id ? album_id : 'root'
   return axios.get(`/files?q='${folder}'+in+parents&fields=files(id, name, mimeType, thumbnailLink, webContentLink)`, { params: { access_token }})
     .then((response) => {
       const entries = response.data.files

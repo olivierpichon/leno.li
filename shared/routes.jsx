@@ -7,6 +7,6 @@ import Album                   from 'components/album'
 export default (
   <Route component={Layout} path="/">
     <IndexRoute component={HomePage} />
-    <Route component={Album} path="albums" />
+    <Route component={Album} path="/albums(/:album_id)" />
   </Route>
 );

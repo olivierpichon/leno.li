@@ -78,7 +78,10 @@ app.use( (req, res) => {
     getGdriveCredentials(store.dispatch, renderProps.components, renderProps.params)
       .then((authorization) => { return fetchComponentData(store.dispatch, renderProps.components, renderProps.params, authorization) })
       .then(renderView)
-      .then(html => res.end(html))
+      .then(html => {
+        res.set('Content-Type', 'text/html');
+        res.end(html)
+      })
       .catch(err => res.end(err.message));
   });
 });
