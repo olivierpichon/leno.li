@@ -139,13 +139,14 @@ body, input, select, textarea {
 }
 
 a {
-  text-decoration: underline;
-  color: #19B5FE;
+  text-decoration: none;
+  color: #0d1217;
 }
 
 a:hover {
   text-decoration: none;
-  color: #019be3;
+  color: #19B5FE;
+  font-weight: bold;
 }
 
 strong, b {

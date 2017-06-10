@@ -22,7 +22,7 @@ class Picture extends React.Component {
     return (
       <div className="media all people">
         <a href={link}>
-          <div className="thumbnail-img" style={divStyle} />
+          <div className="thumbnail img" style={divStyle} />
         </a>
       </div>
     );

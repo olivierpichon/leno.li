@@ -22,8 +22,8 @@ class Album extends React.Component {
         <div className="gallery">
           <header>
             <h1>Gallery</h1>
-            <FolderList folders={ folders }/>
           </header>
+          <FolderList folders={ folders }/>
           <ImgList imgs={ imgs } />
         </div>
       </section>

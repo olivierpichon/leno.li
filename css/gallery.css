@@ -122,7 +122,7 @@
   display: block;
 }
 
-.gallery .content .media .thumbnail-img {
+.gallery .content .media .thumbnail {
   -moz-transition: -moz-transform 0.2s ease-in-out;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
   -ms-transition: -ms-transform 0.2s ease-in-out;
@@ -131,11 +131,23 @@
   width: 220px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #0d1217;
   margin: 0.25em;
 }
 
-.gallery .content .media:hover .thumbnail-img {
+.gallery .content .media .thumbnail.img {
+  background-color: #0d1217;
+}
+
+.gallery .content .media .thumbnail.album {
+  background-image: url("../img/album.svg");
+}
+
+.gallery .content .media .album-title {
+  text-align: center;
+  width: 220px;
+}
+
+.gallery .content .media:hover .thumbnail {
   -moz-transform: scale(1.075);
   -webkit-transform: scale(1.075);
   -ms-transform: scale(1.075);
