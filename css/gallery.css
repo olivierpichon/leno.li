@@ -122,19 +122,20 @@
   display: block;
 }
 
-.gallery .content .media img {
+.gallery .content .media .thumbnail-img {
   -moz-transition: -moz-transform 0.2s ease-in-out;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
   -ms-transition: -ms-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
   height: 165px;
   width: 220px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0d1217;
+  margin: 0.25em;
 }
 
-.gallery .content .media:hover img {
+.gallery .content .media:hover .thumbnail-img {
   -moz-transform: scale(1.075);
   -webkit-transform: scale(1.075);
   -ms-transform: scale(1.075);
