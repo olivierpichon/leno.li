@@ -7,7 +7,7 @@ import * as reducers          from 'reducers'
 import routes                 from 'routes'
 import immutifyState          from 'lib/immutifyState'
 import logger                 from 'lib/logger'
-import { listFolder }         from '../shared/actions/gdrive/action-creators'
+import fetchComponentData     from 'lib/fetchComponentData'
 import { createStore,
     combineReducers,
     applyMiddleware }  from 'redux'
@@ -27,9 +27,11 @@ const store   = applyMiddleware(...middleware)(createStore)(reducer, initialStat
 
 history.listen(location => {
   match({ routes, history }, (error, redirectLocation, renderProps) => {
-    if (renderProps.location.pathname.startsWith('/albums')) {
-      store.dispatch(listFolder(renderProps.params, store.getState().gdrive.get('authorization').toJS()))
-    }
+    fetchComponentData(store.dispatch,
+                       renderProps.components,
+                       renderProps.params,
+                       store.getState().gdrive.get('authorization').toJS()
+    )
   })
 });
 
