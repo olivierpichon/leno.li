@@ -1,10 +1,10 @@
 import React from 'react'
 import Nav from './nav'
 
-const Layout = ({children}) => {
+const Layout = ({children, location}) => {
   return (
     <div className="page-wrap">
-      <Nav />
+      <Nav location={location} />
       <section id="main">
         { children }
       </section>

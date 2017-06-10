@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
-const Nav = () => {
+const Nav = ({location}) => {
+  const albumActive = location.pathname.startsWith("/albums")
   return (
     <nav id="nav">
       <ul>
-        <li><Link className="active" to={'/'}><span className="icon fa-home"></span></Link></li>
-        <li><Link to={'/albums'}><span className="icon fa-camera-retro"></span></Link></li>
-        <li><a href="generic.html"><span className="icon fa-file-text-o"></span></a></li>
+        <li><Link className={!albumActive ? "active" : ""} to={'/'}><span className="icon fa-home"></span></Link></li>
+        <li><Link className={albumActive ? "active" : ""} to={'/albums'}><span className="icon fa-camera-retro"></span></Link></li>
       </ul>
     </nav>
   )
