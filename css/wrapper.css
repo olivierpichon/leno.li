@@ -12,6 +12,7 @@
   -webkit-justify-content: -webkit-flex-start;
   -ms-justify-content: -ms-flex-start;
   justify-content: flex-start;
+  min-height: 100%;
 }
 
 .wrapper {
