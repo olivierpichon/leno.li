@@ -9,8 +9,13 @@ class Folder extends React.Component {
   render() {
     const folder = this.props.folder
     return (
-      <div>
-        <Link to={`/${folder.get('id')}`}>{folder.get('name')}</Link>
+      <div className="media">
+        <Link to={`/albums/${folder.get('id')}`}>
+          <div className="thumbnail album" />
+          <div className="album-title">
+            {folder.get('name')}
+          </div>
+        </Link>
       </div>
     );
   }

@@ -58,6 +58,8 @@ app.use( (req, res) => {
       <html>
         <head>
           <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+		      <link rel="stylesheet" href="/style.css" />
           <title>LenOli</title>
 
           <script>
@@ -76,7 +78,10 @@ app.use( (req, res) => {
     getGdriveCredentials(store.dispatch, renderProps.components, renderProps.params)
       .then((authorization) => { return fetchComponentData(store.dispatch, renderProps.components, renderProps.params, authorization) })
       .then(renderView)
-      .then(html => res.end(html))
+      .then(html => {
+        res.set('Content-Type', 'text/html');
+        res.end(html)
+      })
       .catch(err => res.end(err.message));
   });
 });

@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { listFolder } from '../actions/gdrive/action-creators'
+import { listFolder } from '../../actions/gdrive/action-creators'
 import FolderList from './folder-list'
 import ImgList from './img-list'
 
-class MainView extends React.Component {
+class Album extends React.Component {
   constructor (props) {
     super(props)
   }
@@ -18,18 +18,19 @@ class MainView extends React.Component {
     const imgs    = this.props.gdrive.get('entries').get('imgs')
 
     return (
-      <div id="main-view">
-        <h1>LenOli's Website</h1>
-
-        <hr />
-
-        <FolderList folders={ folders }/>
-        <ImgList imgs={ imgs } />
-      </div>
+      <section id="galleries">
+        <div className="gallery">
+          <header>
+            <h1>Gallery</h1>
+          </header>
+          <FolderList folders={ folders }/>
+          <ImgList imgs={ imgs } />
+        </div>
+      </section>
     );
   }
 }
 
 const mapStateToProps = ({ gdrive }) => ({ gdrive })
 const mapDispatchToProps = { listFolder }
-export default connect(mapStateToProps, mapDispatchToProps)(MainView)
+export default connect(mapStateToProps, mapDispatchToProps)(Album)

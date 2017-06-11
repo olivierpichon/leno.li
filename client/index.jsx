@@ -1,13 +1,13 @@
 import React                  from 'react'
 import { render }             from 'react-dom'
-import { Router }             from 'react-router'
+import { Router, match }      from 'react-router';
 import createBrowserHistory   from 'history/lib/createBrowserHistory'
 import { Provider }           from 'react-redux'
 import * as reducers          from 'reducers'
 import routes                 from 'routes'
 import immutifyState          from 'lib/immutifyState'
 import logger                 from 'lib/logger'
-import { listFolder }         from '../shared/actions/gdrive/action-creators'
+import fetchComponentData     from 'lib/fetchComponentData'
 import { createStore,
     combineReducers,
     applyMiddleware }  from 'redux'
@@ -26,8 +26,13 @@ const reducer = combineReducers(reducers);
 const store   = applyMiddleware(...middleware)(createStore)(reducer, initialState);
 
 history.listen(location => {
-  const params = { splat: location.pathname.substring(1) }
-  store.dispatch(listFolder(params, store.getState().gdrive.get('authorization').toJS()))
+  match({ routes, history }, (error, redirectLocation, renderProps) => {
+    fetchComponentData(store.dispatch,
+                       renderProps.components,
+                       renderProps.params,
+                       store.getState().gdrive.get('authorization').toJS()
+    )
+  })
 });
 
 render(

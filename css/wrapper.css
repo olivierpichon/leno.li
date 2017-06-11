@@ -1,0 +1,41 @@
+.page-wrap {
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -moz-justify-content: -moz-flex-start;
+  -webkit-justify-content: -webkit-flex-start;
+  -ms-justify-content: -ms-flex-start;
+  justify-content: flex-start;
+  min-height: 100%;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.wrapper > .inner {
+  margin: 0 auto;
+  width: 60em;
+}
+
+@media screen and (max-width: 1280px) {
+
+  .wrapper > .inner {
+    width: 65em;
+  }
+
+}
+
+@media screen and (max-width: 980px) {
+
+  .wrapper > .inner {
+    width: 100%;
+  }
+
+}

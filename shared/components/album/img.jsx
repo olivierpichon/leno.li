@@ -16,10 +16,14 @@ class Picture extends React.Component {
   render() {
     const img  = this.props.img
     const link = this.getPictureLink()
+    const divStyle = {
+      backgroundImage: `url(${img.get('thumbnailLink')})`
+    }
     return (
-      <div>
-        <a href={link}>{img.get('name')}</a>
-        <a href={link}><img src={img.get('thumbnailLink')} /></a>
+      <div className="media all people">
+        <a href={link}>
+          <div className="thumbnail img" style={divStyle} />
+        </a>
       </div>
     );
   }
