@@ -42,6 +42,6 @@ module.exports = {
       }
     }),
     new ExtractTextPlugin("style.css"),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS', 'NODE_PATH'])
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS'])
   ]
 };

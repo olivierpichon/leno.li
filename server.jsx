@@ -4,12 +4,12 @@ import React                     from 'react'
 import { renderToString }        from 'react-dom/server'
 import { RouterContext, match }  from 'react-router'
 import { createLocation }        from 'history/lib/LocationUtils'
-import routes                    from 'routes'
+import routes                    from './shared/routes'
 import { Provider }              from 'react-redux'
-import * as reducers             from 'reducers'
-import logger                    from 'lib/logger'
-import fetchComponentData        from 'lib/fetchComponentData'
-import getGdriveCredentials      from 'lib/getGdriveCredentials'
+import * as reducers             from './shared/reducers'
+import logger                    from './shared/lib/logger'
+import fetchComponentData        from './shared/lib/fetchComponentData'
+import getGdriveCredentials      from './shared/lib/getGdriveCredentials'
 import { createStore,
          combineReducers,
          applyMiddleware }       from 'redux';

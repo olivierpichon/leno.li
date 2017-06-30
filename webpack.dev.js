@@ -55,7 +55,7 @@ export default function(app) {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
       new ExtractTextPlugin("style.css"),
-      new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS', 'NODE_PATH'])
+      new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_APPLICATION_CREDENTIALS'])
     ]
   });
 
