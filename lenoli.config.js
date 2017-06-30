@@ -2,7 +2,7 @@ module.exports = {
   apps : [
     {
       name        : "lenoli",
-      script      : "./index.js",
+      script      : "./app.js",
       watch       : true,
       instances  : 2,
       exec_mode  : "cluster"
