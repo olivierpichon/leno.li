@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { listFolder } from '../../actions/gdrive/action-creators'
 import FolderList from './folder-list'
 import ImgList from './img-list'
+import Loader from './loader'
 
 class Album extends React.Component {
   constructor (props) {
@@ -16,21 +17,26 @@ class Album extends React.Component {
   render() {
     const folders = this.props.gdrive.get('entries').get('folders')
     const imgs    = this.props.gdrive.get('entries').get('imgs')
-
+    
     return (
       <section id="galleries">
+        <Loader on={this.props.loader.get('loader')} />
         <div className="gallery">
           <header>
             <h1>Gallery</h1>
           </header>
-          <FolderList folders={ folders }/>
-          <ImgList imgs={ imgs } />
+          { folders.size ?
+            <FolderList folders={ folders }/> : ""
+          }
+          { imgs.size ?
+            <ImgList imgs={ imgs } /> : ""
+          }
         </div>
       </section>
     );
   }
 }
 
-const mapStateToProps = ({ gdrive }) => ({ gdrive })
+const mapStateToProps = ({ gdrive, loader }) => ({ gdrive, loader })
 const mapDispatchToProps = { listFolder }
 export default connect(mapStateToProps, mapDispatchToProps)(Album)

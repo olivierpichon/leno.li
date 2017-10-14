@@ -4,7 +4,7 @@ import * as actions from './actions'
 export const listFolder = ({album_id}, {access_token}) => (dispatch) => {
   dispatch(actions.updateStore())
   const folder = album_id ? album_id : 'root'
-  return axios.get(`/files?q='${folder}'+in+parents&fields=files(id, name, mimeType, thumbnailLink, webContentLink)`, { params: { access_token }})
+  return axios.get(`/files?q='${folder}'+in+parents&fields=files(id, name, mimeType, thumbnailLink, webContentLink, imageMediaMetadata)`, { params: { access_token }})
     .then((response) => {
       const entries = response.data.files
       const folders = entries.filter((file) => (file.mimeType === 'application/vnd.google-apps.folder'))
