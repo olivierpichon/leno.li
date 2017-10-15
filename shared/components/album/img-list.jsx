@@ -60,10 +60,8 @@ class ImgList extends React.Component {
     });
   }
 
-  handleClickImage () {
-    if (this.state.currentImage === this.props.images.length - 1) return;
-
-    this.gotoNext();
+  handleClickImage (e) {
+    window.location=e.target.src
   }
 
   closeLightbox () {
