@@ -21,7 +21,7 @@ class Picture extends React.Component {
     }
     return (
       <div className="media all people">
-        <a href={link}>
+        <a href={link} onClick={(e) => this.props.openLightBox(this.props.imgIndex, e)}>
           <div className="thumbnail img" style={divStyle} />
         </a>
       </div>

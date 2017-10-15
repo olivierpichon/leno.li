@@ -9,3 +9,4 @@ require("./table.css");
 require("./wrapper.css");
 require("./layout.css");
 require("./gallery.css");
+require("./loader.css");
