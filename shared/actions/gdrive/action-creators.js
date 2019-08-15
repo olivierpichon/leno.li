@@ -9,7 +9,7 @@ export const listFolder = ({album_id}, {access_token}) => (dispatch) => {
       const entries = response.data.files
       const folders = entries.filter((file) => (file.mimeType === 'application/vnd.google-apps.folder'))
       const pattern = new RegExp(/image*./)
-      const imgs    = entries.filter((file) => (pattern.test(file.mimeType)))
+      const imgs    = entries.filter((file) => (pattern.test(file.mimeType))).reverse()
       const result  =  { folders, imgs }
       dispatch(actions.listfolderSuccess(result))
       return result
