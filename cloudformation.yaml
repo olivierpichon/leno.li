@@ -57,7 +57,7 @@ Resources:
       Handler: lambda.handler
       MemorySize: 1024
       Role: !GetAtt LambdaExecutionRole.Arn
-      Runtime: nodejs6.10
+      Runtime: nodejs12.x
       Environment:
         Variables:
           NODE_ENV: production

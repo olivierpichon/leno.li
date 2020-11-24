@@ -32,7 +32,12 @@ app.use('/server_imgs/:id', (req, res) => {
   const { params, query } = req
   const queryParams = `?alt=media`
   return axios.get(`/files/${params.id}${queryParams}`, {responseType:'stream', headers: {'Authorization': 'Bearer '+ query.access_token}})
-    .then(({ data }) => data.pipe(res))
+    .then(({ data }) => {
+      res.writeHead(200, {
+        'Content-Type': data.headers['content-type']
+      });
+      data.pipe(res)
+    })
 })
 
 app.use( (req, res) => {
