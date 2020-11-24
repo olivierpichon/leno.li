@@ -34,7 +34,8 @@ app.use('/server_imgs/:id', (req, res) => {
   return axios.get(`/files/${params.id}${queryParams}`, {responseType:'stream', headers: {'Authorization': 'Bearer '+ query.access_token}})
     .then(({ data }) => {
       res.writeHead(200, {
-        'Content-Type': data.headers['content-type']
+        'Content-Type': data.headers['content-type'],
+        'Content-Length': data.headers['content-length']
       });
       data.pipe(res)
     })
