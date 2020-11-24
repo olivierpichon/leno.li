@@ -14,6 +14,7 @@ import { createStore,
          combineReducers,
          applyMiddleware }       from 'redux';
 import thunk from 'redux-thunk'
+import axios from './shared/lib/axios'
 
 const middleware = process.env.NODE_ENV === 'production'
   ? [thunk]
@@ -26,6 +27,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.use('/server_imgs/:id', (req, res) => {
+  const { params, query } = req
+  const queryParams = `?alt=media`
+  return axios.get(`/files/${params.id}${queryParams}`, {responseType:'stream', headers: {'Authorization': 'Bearer '+ query.access_token}})
+    .then(({ data }) => data.pipe(res))
+})
 
 app.use( (req, res) => {
   const location = createLocation(req.url);
@@ -48,7 +56,7 @@ app.use( (req, res) => {
           <RouterContext {...renderProps} />
         </Provider>
       );
-      
+
       const componentHTML = renderToString(InitialView);
 
       const initialState = store.getState();
@@ -75,7 +83,7 @@ app.use( (req, res) => {
 
       return HTML;
     }
-    getGdriveCredentials(store.dispatch, renderProps.components, renderProps.params)
+    getGdriveCredentials(store.dispatch, renderProps.components, renderProps.params).catch(console.error)
       .then((authorization) => { return fetchComponentData(store.dispatch, renderProps.components, renderProps.params, authorization) })
       .then(renderView)
       .then(html => {
