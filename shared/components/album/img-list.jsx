@@ -34,7 +34,7 @@ class ImgList extends React.Component {
   }
 
   getPictureLink(id) {
-    const baseUrl      = 'https://www.googleapis.com/drive/v3/files/'
+    const baseUrl      = '/server_imgs/'
     const access_token = this.props.gdrive.get('authorization').get('access_token')
     const queryParams  = `?alt=media&access_token=${access_token}`
     return `${baseUrl}${id}${queryParams}`

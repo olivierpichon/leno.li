@@ -6,22 +6,14 @@ class Picture extends React.Component {
     super(props)
   }
 
-  getPictureLink() {
-    const baseUrl      = 'https://www.googleapis.com/drive/v3/files/'
-    const access_token = this.props.gdrive.get('authorization').get('access_token')
-    const queryParams  = `?alt=media&access_token=${access_token}`
-    return `${baseUrl}${this.props.img.get('id')}${queryParams}`
-  }
-
   render() {
     const img  = this.props.img
-    const link = this.getPictureLink()
     const divStyle = {
       backgroundImage: `url(${img.get('thumbnailLink')})`
     }
     return (
       <div className="media all people">
-        <a href={link} onClick={(e) => this.props.openLightBox(this.props.imgIndex, e)}>
+        <a href='#' onClick={(e) => this.props.openLightBox(this.props.imgIndex, e)}>
           <div className="thumbnail img" style={divStyle} />
         </a>
       </div>
