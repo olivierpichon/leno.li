@@ -42,7 +42,7 @@
     "axios": "^0.16.1",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.20.0",
-    "babel-loader": "^6.2.9",
+    "babel-loader": "^9.1.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
@@ -53,7 +53,7 @@
     "buffer": "^5.0.6",
     "css-loader": "^0.28.3",
     "express": "^4.14.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^0.11.1",
     "google-auth-library": "git+https://github.com/olivierpichon/google-auth-library.git",
     "history": "^3.0.0",
@@ -69,7 +69,7 @@
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.18.1",
-    "webpack": "^1.14.0"
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
